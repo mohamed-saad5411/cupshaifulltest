@@ -8,7 +8,7 @@ const CreateTransactionSchema = z.object({
   amount: z.number().positive(),
   currency: z.string().length(3),
   type: z.enum(["support", "subscription", "payout", "other"]).default("support"),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 export async function GET(req: NextRequest) {
